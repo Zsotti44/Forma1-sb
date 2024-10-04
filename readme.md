@@ -9,7 +9,8 @@
 - A models mappában a UserDTO és MessageDTO-k 
 - Az adatbázisban létrehoztam egy view-t, az egyik feladathoz egy táblázatot kell megjeleníteni, ami 3 táblát használ. Gondoltam egy ilyenre, hogy győztesek, de ez csak egy ötlet.
 
->Sorry, az adatbázis táblák, oszlopok magyarok voltak, így úgy voltam vele, hogy maradjon magyar a többi tábla is, keverni még rosszabb :D 
+> Sorry, az adatbázis táblák, oszlopok magyarok voltak, így úgy voltam vele, hogy maradjon magyar a többi tábla is, keverni még rosszabb :D 
+>
 
 ### Regisztráció: 
 
@@ -33,4 +34,7 @@ A response egyelőre így néz ki. Majd módosítjuk attól függően mi kell, v
     "permission": 1
 }
 ```
+
+ >A permission-t most úgy csináltam, hogy 1 az admin, 2 a user. Regisztrálni nem tudsz 1-est, azt adatbázisban tudod átütni 1-re 
+ >
 
