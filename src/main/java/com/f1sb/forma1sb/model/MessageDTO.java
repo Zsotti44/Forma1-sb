@@ -1,6 +1,6 @@
 package com.f1sb.forma1sb.model;
 
-import java.time.LocalDate;
+import java.sql.Timestamp;
 
 /**
  * MessageDTO, uzenetek adatbázis tábla
@@ -8,11 +8,11 @@ import java.time.LocalDate;
 public class MessageDTO {
 
     private final int id;
-    private int userId;
+    private Integer userId;
     private String message;
-    private LocalDate createdDate;
+    private Timestamp createdDate;
 
-    public MessageDTO(int userId, int id, String message, LocalDate createdDate) {
+    public MessageDTO(Integer userId, int id, String message, Timestamp createdDate) {
         this.userId = userId;
         this.id = id;
         this.message = message;
@@ -23,11 +23,11 @@ public class MessageDTO {
         return id;
     }
 
-    public int getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
 
@@ -39,11 +39,11 @@ public class MessageDTO {
         this.message = message;
     }
 
-    public LocalDate getCreatedDate() {
+    public Timestamp getCreatedDate() {
         return createdDate;
     }
 
-    public void setCreatedDate(LocalDate createdDate) {
+    public void setCreatedDate(Timestamp createdDate) {
         this.createdDate = createdDate;
     }
 }
