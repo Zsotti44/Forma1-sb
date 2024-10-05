@@ -9,5 +9,14 @@ public class HomeController {
     public String home() {
         return "home";
     }
+    @GetMapping("/login")
+    public String login() {
+        return "auth/login";
+    }
+
+    @GetMapping("/register")
+    public String register() {
+        return "auth/register";
+    }
 
 }
