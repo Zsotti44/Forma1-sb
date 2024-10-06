@@ -4,8 +4,8 @@
 <body class="text-center">
 <div th:replace="~{layout :: navbar}"></div>
 
+<section class="page-section" id="login">
 <div class="authform">
-
   <form class="form-signin" th:actiom="@{/auth/login}" method="post">
     <h1 class="h3 mb-3 font-weight-normal">Jelentkezzen be!</h1>
     <label for="inputEmail" class="sr-only">Email cím</label>
@@ -16,7 +16,7 @@
 
   </form>
 </div>
-
+</section>
 
 <div th:replace="~{layout :: footer}"></div>
 <div th:replace="~{layout :: javascripts}"></div>

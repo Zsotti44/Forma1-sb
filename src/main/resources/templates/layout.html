@@ -35,19 +35,23 @@
                     <a class="nav-link" href="/">Kezdőlap</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Menü 1</a>
+                    <a class="nav-link" href="#">Menü 1</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Menü 2</a>
+                    <a class="nav-link" sec:authorize="!isAuthenticated()" href="/login">Bejelentlezés</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/login">Bejelentlezés</a>
+                    <a class="nav-link" sec:authorize="!isAuthenticated()" href="/register">Regisztráció</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/register">Regisztráció</a>
+                    <a class="nav-link" sec:authorize="hasRole('ADMIN')" href="/admin/home">Adminisztráció</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" sec:authorize="isAuthenticated()" href="#">Kijelentkezés</a>
                 </li>
 
             </ul>
+            <span class="welcome"> Bejelentkeze mint, Kiss Jakab (User)</span>
         </div>
     </nav>
 
