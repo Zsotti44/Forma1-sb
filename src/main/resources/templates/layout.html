@@ -1,11 +1,12 @@
 <!doctype html>
-<html xmlns:th="https://www.thymeleaf.org">
+<html xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:fragment="header">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Formula 1 </title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link th:href="@{css/main.css}"  rel="stylesheet">
 
 </head>
 
@@ -15,13 +16,14 @@
     <title>Formula 1 </title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link th:href="@{auth.css}"  rel="stylesheet">
+    <link th:href="@{css/main.css}"  rel="stylesheet">
+    <link th:href="@{css/auth.css}"  rel="stylesheet">
 
 </head>
 <body>
 <div th:fragment="navbar">
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-        <a class="navbar-brand" href="#"><font color="red">Forma</font> 1</a>
+    <nav class="navbar navbar-expand-md fixed-top navbar-dark">
+        <a class="navbar-brand" href="/"><img width="75%" th:src="@{img/f1_logo_w.png}"/> </a>
         <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbaar"
                 aria-controls="navbaar" aria-expanded="false">
             <span class="navbar-toggler-icon"></span>
@@ -30,7 +32,7 @@
         <div class="navbar-collapse collapse" id="navbaar" style="">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Kezdőlap</a>
+                    <a class="nav-link" href="/">Kezdőlap</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link disabled" href="#">Menü 1</a>
