@@ -2,22 +2,18 @@ package com.f1sb.forma1sb.controller;
 
 import com.f1sb.forma1sb.model.CustomUserDetails;
 import com.f1sb.forma1sb.service.MyUserDetailsService;
-import org.json.JSONObject;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.security.core.AuthenticationException;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
-import java.util.HashMap;
-import java.util.Map;
-
 
 @RestController
 @RequestMapping("/auth")
@@ -65,18 +61,17 @@ public class AuthorizationController {
             UsernamePasswordAuthenticationToken authenticationToken =
                     new UsernamePasswordAuthenticationToken(username, password);
 
-            Authentication authentication = authenticationManager.authenticate(authenticationToken);
-            CustomUserDetails loggedInUser = (CustomUserDetails) authentication.getPrincipal();
+            authenticationManager.authenticate(authenticationToken);
 
-            Map<String, Object> response = new HashMap<>();
-            response.put("userId", loggedInUser.getUserid());
-            response.put("userName", loggedInUser.getUsername());
-            response.put("permission", loggedInUser.getFirstAuthority());
-            JSONObject jsonObject = new JSONObject(response);
-
-            return ResponseEntity.ok(jsonObject.toString());
+            return ResponseEntity.ok("Logged in successfully.");
         } catch (AuthenticationException e) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid username or password.");
         }
+    }
+
+    @PostMapping("/logout")
+    public ResponseEntity<String> logout(HttpServletRequest request) {
+        request.getSession().invalidate();
+        return ResponseEntity.ok("Logout successful");
     }
 }

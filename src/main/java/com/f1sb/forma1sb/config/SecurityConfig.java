@@ -27,7 +27,11 @@ public class SecurityConfig {
                         .anyRequest().authenticated()  // Minden más végpont hitelesítést igényel
                 )
                 .httpBasic(withDefaults())  // HTTP Basic Auth használata alapértelmezett beállításokkal
-                .logout(withDefaults());  // Kilépés alapértelmezett beállításokkal
+                .logout(logout -> logout
+                        .logoutUrl("/auth/logout")
+                        .logoutSuccessUrl("/")
+                        .invalidateHttpSession(true)
+                        .deleteCookies("JSESSIONID"));
         return http.build();
     }
 
