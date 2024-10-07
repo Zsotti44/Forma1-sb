@@ -12,7 +12,7 @@ public class DiagController {
 
     @GetMapping("/available")
     @ResponseBody
-    public String sayHello() {
+    public String available() {
         return "<h1>Service is available</h1>";
     }
 
