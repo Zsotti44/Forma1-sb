@@ -1,0 +1,68 @@
+Tartalomjegyzék
+
+1.	Bevezetés	3
+1.1.	Dokumentum célja	3
+1.2.	Választott projekt leírása	3
+1.3.	Feladatok	3
+2.	Fejlesztési környezet	4
+2.1	A web szerver: Apache Tomcat és XAMPP	4
+2.2	Verziókövetés: GitHub	4
+2.3	Használt technológiák	4
+
+ 
+1.	Bevezetés
+1.1.	Dokumentum célja
+
+Jelen leírás a(z) „L-LA01 Java alkalmazások [L-K-GINFBAL-JAVAALKA-1-LA01]” elnevezésű kurzus, Sándor Adrián és Katona Zsolt által fejlesztés alatt álló számítástechnikai projekt, weboldal fejlesztői környezetét, koncepcióját, design elemeinek tervezett megvalósítását és fejlesztési tevékenységeit ismerteti.
+
+1.2.	Választott projekt leírása
+
+
+1.3.	Feladatok
+1.3.1	Az első oldalon mutassa be a céget egy látványos weboldalon
+
+1.3.2	Legyen Regisztráció, Bejelentkezési lehetőség:
+- A „Belépés” menüpont akkor látható, ha nincs bejelentkezve a felhasználó.
+- A „Kilépés” menüpont akkor látható, ha be van jelentkezve a felhasználó.
+- A rendszer fejlécen jelenítse meg a bejelentkezett felhasználót, ha be van lépve
+
+1.3.3	Legalább 3 felhasználói szerepet különböztessen meg: 	
+Admin, User, Látogató
+A menüpontok megjelenése és az oldalak elérhetősége változik attól függően, 
+hogy melyik felhasználó használja az oldalt. (pl. admin oldal)
+
+1.3.4	Legyen egy oldal, ahol a választott adatbázisból jelenít meg adatokat
+Ehhez 3 tábla adatait használja fel az adatbázisból.
+
+1.3.5	Az egyik oldalon legyen egy kapcsolat űrlap, amelynek segítségével üzenetet lehet küldeni az oldal tulajdonosa számára. Ellenőrizze megfelelően az űrlap helyes kitöltését szerver oldali validációval is. Az elküldött Űrlap adatokat mentse le az adatbázisba. 
+
+1.3.6	Tegye lehetővé megtekinteni egy hatodik oldalon táblázatban az előző pontban elküldött üzeneteket az adatbázisból fordított időrend szerint (a legfrissebb legyen elől). Írja minden üzenethez a küldés idejét és az üzenetküldő nevét. Ha nem bejelentkezett felhasználó írta, akkor: "Vendég". 
+
+1.3.7	Valósítson meg az alkalmazásban egy RESTful API-t.
+Tesztelje az API funkcióit cURL-el és Postman-al is. Mindkét tesztről tegyen képernyőképeket a dokumentációba
+
+1.3.8	Használják a GitHub (github.com) verziókövető rendszert.
+
+1.3.9	A GitHub-on a projektmunka módszert alkalmazzák: látszódjék, hogy a csoport tagjai melyik részt készítették el és kb. fele-fele arányban járuljanak hozzá a projekthez. Ne csak a kész alkalmazást töltsék fel egy lépésben, hanem a részállapotokat is még legalább 5 lépésben személyenként.
+2.	Fejlesztési környezet
+2.1	A web szerver: Apache Tomcat és XAMPP
+A XAMPP egy ingyenes és nyílt forrású cross-platform web szerver megoldáscsomag, amelyet kifejezetten fejlesztési célokra terveztek. A XAMPP az Apache Tomcat web szervert, MariaDB adatbázis-kezelőt. A XAMPP segítségével a fejlesztők gyorsan létrehozhatnak egy helyi fejlesztési környezetet a számítógépükön, amely lehetővé teszi számukra a weboldalak és webalkalmazások fejlesztését és tesztelését anélkül, hogy szükség lenne egy élő szerverre. Ez különösen előnyös a fejlesztés korai szakaszaiban, amikor gyakoriak a változtatások, és fontos a gyors iteráció.
+Az Apache Tomcat egy tisztán Java nyelven készült webszerver, amely implementálja a Sun-féle Java Servlet és a JavaServer Pages specifikációkat. E specifikációkat támogató webszervereket szokás a servlet container, a servlet engine illetve a web engine összetételekkel is illetni.
+2.2	Verziókövetés: GitHub
+A GitHub, mint vezető szoftverfejlesztési platform, lehetővé teszi a csapat számára, hogy hatékonyan kezelje a kódbázist, nyomon követhesse a változásokat, és elősegítse a kollaboratív munkát azáltal, hogy egy központosított helyen tárolja a projekt fájljait és dokumentációját. Az integrált verziókezelési rendszer előnyei közé tartozik a fejlesztési folyamatok nagyfokú automatizálása, a visszaállíthatóság, valamint a különböző fejlesztési ágak (branches) kezelése, ami lehetővé teszi a csapat számára, hogy párhuzamosan dolgozzon különböző funkciókon. A GitHub használatával a fejlesztőcsapat kihasználhatja a kódmegosztás és a közösségi hozzájárulás előnyeit is, így gyorsítva a fejlesztési ciklusokat és javítva a projekt átláthatóságát és nyomon követhetőségét.
+
+2.3	Használt technológiák
+A csapat a fejlesztés során számos modern és bevált technológiát alkalmaz, hogy biztosítsák a webalkalmazásuk gyors, biztonságos és felhasználóbarát működését:
+
+Java: A Java általános célú, objektumorientált programozási nyelv mely kiválóan használható akár bonyolultabb, nagy elérésű alkalmazások akár kisebb weboldalak szerveroldali megoldásaként.
+Spring framework: A Spring egy nyílt forráskódú, IoC-t megvalósító Java alkalmazás keretrendszer.
+
+Spring Boot framework: A Spring Boot a Spring keretrendszer kiterjesztése, amely egyszerűsíti az új Spring alkalmazások kezdeti beállítását és fejlesztését. 
+
+HTML (HyperText Markup Language): Az internet alapját képező leíró nyelv, amely a weboldalak struktúráját adja meg. Az HTML5 a legújabb verziója, amely további szemantikai elemeket és jobb multimedia támogatást kínál, ezáltal elősegíti a reszponzív webdesign kialakítását.
+
+Thymeleaf
+A Thymeleaf egy Java XML/XHTML/HTML5 sablonmotor, amely webes (servlet-alapú) és nem webes környezetben egyaránt működik. Alkalmas az XHTML/HTML5 kiszolgálására az MVC-alapú webes alkalmazások nézeti rétegében, de bármilyen XML-fájlt képes feldolgozni offline környezetben is. Teljes Spring Framework integrációt biztosít
+Bootstrap: Egy ingyenes és nyílt forrású front-end keretrendszer, amely elősegíti a gyors és egyszerű reszponzív webdesign kialakítását. Készen álló HTML és CSS sablonokat, valamint JavaScript komponenseket kínál, amelyekkel könnyedén lehet készíteni felhasználóbarát és esztétikailag vonzó weboldalakat.
+
+Reszponzív webdesign: Az a tervezési és fejlesztési módszertan, amelynek célja, hogy a weboldalak minden eszközön - asztali számítógéptől kezdve a mobiltelefonokig - jól nézzenek ki és jól működjenek. A Bootstrap keretrendszer kiválóan támogatja a reszponzív webdesign kialakítását.
