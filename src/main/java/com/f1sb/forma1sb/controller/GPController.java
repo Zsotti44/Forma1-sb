@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.sql.Date;
+
 @Controller
 @RequestMapping(path="/api/gp")
 public class GPController {
@@ -17,7 +19,7 @@ public class GPController {
     private GPRepository GPRepository;
 
     @PostMapping(path="/add") // Map ONLY POST Requests
-    public @ResponseBody String addGP (@RequestParam String datum, @RequestParam String nev, @RequestParam String helyszin) {
+    public @ResponseBody String addGP (@RequestParam Date datum, @RequestParam String nev, @RequestParam String helyszin) {
 
         GP gp = new GP();
         gp.setHelyszin(helyszin);

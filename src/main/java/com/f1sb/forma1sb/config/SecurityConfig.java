@@ -11,8 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-
-import static org.springframework.security.config.Customizer.withDefaults;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
@@ -23,15 +22,17 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(authz -> authz
-                        .requestMatchers("/public/**", "/auth/**", "/diag/**").permitAll()  // Nyilvános végpontok
+                        .requestMatchers("/login","/img/**","/register","/css/**","/", "/auth/**", "/diag/**").permitAll()  // Nyilvános végpontok
                         .anyRequest().authenticated()  // Minden más végpont hitelesítést igényel
                 )
-                .httpBasic(withDefaults())  // HTTP Basic Auth használata alapértelmezett beállításokkal
+                .formLogin(form -> form
+                        .loginPage("/sign-in")
+                        .permitAll()
+                )
                 .logout(logout -> logout
-                        .logoutUrl("/auth/logout")
+                        .logoutRequestMatcher(new AntPathRequestMatcher("/auth/logout"))
                         .logoutSuccessUrl("/")
-                        .invalidateHttpSession(true)
-                        .deleteCookies("JSESSIONID"));
+                        .invalidateHttpSession(true));
         return http.build();
     }
 

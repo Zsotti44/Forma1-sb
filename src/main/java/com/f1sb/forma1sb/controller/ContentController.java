@@ -22,7 +22,7 @@ public class ContentController {
         model.addAttribute("countGP",gpController.countGPs());
         return "home";
     }
-    @GetMapping("/login")
+    @GetMapping("/sign-in")
     public String login() {
         return "auth/login";
     }
