@@ -40,7 +40,7 @@ public class MessageController {
 
     @PostMapping("/message/post")
     @ResponseBody
-    public ResponseEntity<String> postMessage(@RequestBody UzenetRequest postMessageRequest) {
+    public ResponseEntity<String> postUzenet(@RequestBody UzenetRequest postMessageRequest) {
         if (postMessageRequest.getUzenet() == null) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Message must be filled");
         }
