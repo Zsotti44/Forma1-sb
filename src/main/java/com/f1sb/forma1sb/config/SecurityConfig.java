@@ -14,6 +14,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+import static org.springframework.security.config.Customizer.withDefaults;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
@@ -26,6 +28,7 @@ public class SecurityConfig {
                         .requestMatchers("/js/**","/login","/img/**","/register","/css/**","/", "/auth/**", "/diag/**").permitAll()  // Nyilvános végpontok
                         .anyRequest().authenticated()  // Minden más végpont hitelesítést igényel
                 )
+                .httpBasic(withDefaults())
                 .formLogin(form -> form
                         .loginPage("/sign-in")
                         .permitAll()
