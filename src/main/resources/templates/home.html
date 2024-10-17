@@ -11,31 +11,81 @@
                 <div class="masthead-subheading">weboldalán</div>
             </div>
         </header>
-        <section class="page-section" id="statistics">
+
+
+        <!-- About Section -->
+        <section id="about" class="content-section">
             <div class="container">
-                <div class="text-center">
-                    <h1 class="text-uppercase">Statisztikák</h1>
-                    <h3 class="text-muted">1950-2006</h3>
+                <h2 class="text-center mb-5">Mi is az a Forma-1?</h2>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>Versenyek és Nagydíjak</h3>
+                        <p>A Forma-1 versenyeket világszerte rendezik meg. A szezon futamai minden évben számos helyszínen zajlanak, ahol a világ legjobb pilótái mérik össze tudásukat a legfejlettebb technológiával készült autókkal.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <h3>Technológia és Innováció</h3>
+                        <p>A Forma-1 autók a legújabb technológiákat alkalmazzák, és folyamatos fejlesztéseken mennek keresztül. Az autóipar számos újítása először a Forma-1-ben jelenik meg, mielőtt a közúti autókban is elterjedne.</p>
+                    </div>
                 </div>
-                <div class="row text-center">
-                    <div class="col-md-4">
 
-                        <h3 class="my-3">Eddigi GP-k száma</h3>
-                        <h4 class="text-muted" th:text="${countGP}"></h4>
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <h3>Pilóták</h3>
+                        <p>A Forma-1 pilótái világszerte híresek. Olyan nevek, mint Lewis Hamilton, Max Verstappen vagy Fernando Alonso, lenyűgöző versenyzői teljesítményt nyújtanak, és a sport iránti szenvedélyük példátlan.</p>
                     </div>
-                    <div class="col-md-4">
-
-                        <h3 class="my-3">Induló pilóták száma</h3>
-                        <h4 class="text-muted" th:text="${countPilots}"></h4>
+                    <div class="col-md-6">
+                        <h3>Stratégia és Csapatmunka</h3>
+                        <p>Bár az autók a reflektorfényben vannak, a versenyek sikere mögött összetett csapatmunka és kifinomult stratégia áll. Mérnökök, tervezők és stratégiák dolgoznak együtt, hogy a legjobbat hozzák ki minden futamból.</p>
                     </div>
-                    <div class="col-md-4">
+                </div>
 
-                        <h3 class="my-3">Statisztika 3</h3>
-                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+
+            </div>
+        </section>
+
+        <section class="gallery-section">
+            <div class="container">
+                <div class="row g-4">
+                    <!-- Image 1 -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card">
+                            <img src="https://example.com/f1-image1.jpg" alt="Forma-1 autó 1" class="card-img-top gallery-img">
+                        </div>
+                    </div>
+                    <!-- Image 2 -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card">
+                            <img src="https://example.com/f1-image2.jpg" alt="Forma-1 autó 2" class="card-img-top gallery-img">
+                        </div>
+                    </div>
+                    <!-- Image 3 -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card">
+                            <img src="https://example.com/f1-image3.jpg" alt="Forma-1 autó 3" class="card-img-top gallery-img">
+                        </div>
+                    </div>
+                    <!-- Image 4 -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card">
+                            <img src="https://example.com/f1-image4.jpg" alt="Forma-1 autó 4" class="card-img-top gallery-img">
+                        </div>
+                    </div>
+                    <!-- Image 5 -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card">
+                            <img src="https://example.com/f1-image5.jpg" alt="Forma-1 autó 5" class="card-img-top gallery-img">
+                        </div>
+                    </div>
+                    <!-- Image 6 -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card">
+                            <img src="https://example.com/f1-image6.jpg" alt="Forma-1 autó 6" class="card-img-top gallery-img">
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
+
         <div th:replace="~{layout :: footer}"></div>
         <div th:replace="~{layout :: javascripts}"></div>
     </body>

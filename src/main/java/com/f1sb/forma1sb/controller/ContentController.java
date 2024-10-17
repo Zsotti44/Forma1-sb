@@ -17,11 +17,17 @@ public class ContentController {
     }
 
     @GetMapping({"","/"})
-    public String home(Model model) {
-        model.addAttribute("countPilots",pilotaController.countPilots());
-        model.addAttribute("countGP",gpController.countGPs());
+    public String home() {
+
         return "home";
     }
+    @GetMapping("/stats")
+    public String stats(Model model){
+        model.addAttribute("countPilots",pilotaController.countPilots());
+        model.addAttribute("countGP",gpController.countGPs());
+        return "stats";
+    }
+
     @GetMapping("/sign-in")
     public String login() {
         return "auth/login";

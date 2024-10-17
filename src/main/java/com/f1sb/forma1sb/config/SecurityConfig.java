@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -22,13 +23,14 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(authz -> authz
-                        .requestMatchers("/login","/img/**","/register","/css/**","/", "/auth/**", "/diag/**").permitAll()  // Nyilvános végpontok
+                        .requestMatchers("/js/**","/login","/img/**","/register","/css/**","/", "/auth/**", "/diag/**").permitAll()  // Nyilvános végpontok
                         .anyRequest().authenticated()  // Minden más végpont hitelesítést igényel
                 )
                 .formLogin(form -> form
                         .loginPage("/sign-in")
                         .permitAll()
                 )
+                //.httpBasic(Customizer.withDefaults())
                 .logout(logout -> logout
                         .logoutRequestMatcher(new AntPathRequestMatcher("/auth/logout"))
                         .logoutSuccessUrl("/")

@@ -76,18 +76,18 @@ public class AuthorizationController {
         try {
             UsernamePasswordAuthenticationToken authenticationToken =
                     new UsernamePasswordAuthenticationToken(username, password);
-
-            authenticationManager.authenticate(authenticationToken);
+            Authentication authentication = authenticationManager.authenticate(authenticationToken);
+            SecurityContextHolder.getContext().setAuthentication(authentication);
 
             return ResponseEntity.ok("Logged in successfully.");
         } catch (AuthenticationException e) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid username or password.");
         }
     }
-    /* Erre találtam gyári megoldást.
+     //Erre találtam gyári megoldást.
     @PostMapping("/logout")
     public ResponseEntity<String> logout(HttpServletRequest request) {
         request.getSession().invalidate();
         return ResponseEntity.ok("Logout successful");
-    }*/
+    }
 }
