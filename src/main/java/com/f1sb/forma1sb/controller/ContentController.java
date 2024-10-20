@@ -1,19 +1,24 @@
 package com.f1sb.forma1sb.controller;
 
+import com.f1sb.forma1sb.model.UzenetDTO;
 import com.f1sb.forma1sb.model.repositories.PilotaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.List;
+
 @Controller
 public class ContentController {
     @Autowired private  GPController gpController;
     @Autowired private  PilotaController pilotaController;
+    @Autowired private  MessageController messageController;
 
-    public ContentController(GPController gpController, PilotaController pilotaController) {
+    public ContentController(GPController gpController, PilotaController pilotaController, MessageController messageController) {
         this.pilotaController = pilotaController;
         this.gpController = gpController;
+        this.messageController = messageController;
     }
 
     @GetMapping({"","/"})
@@ -28,8 +33,9 @@ public class ContentController {
     }
 
     @GetMapping("/contact_messages")
-    public String ContactMessages() {
-
+    public String ContactMessages(Model model) {
+        List<UzenetDTO> uzenetekDTO = messageController.getAllDTO();
+        model.addAttribute("uzenetek",uzenetekDTO);
         return "contact_messages";
     }
 

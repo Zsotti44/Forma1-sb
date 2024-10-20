@@ -7,24 +7,12 @@
 
 <section class="page-section" id="contact">
     <div class="container">
-        <form th:action="@{/contact}" th:object="${contactForm}" method="post">
+        <form th:action="@{/api/message/add}" method="post">
             <div class="mb-3">
-                <label for="name" class="form-label">Név</label>
-                <input type="text" class="form-control" id="name" placeholder="Add meg a neved">
+                <label for="uzenet" class="form-label">Üzenet</label>
+                <textarea class="form-control" name="uzenet" id="uzenet" rows="5"  placeholder="Írd le az üzeneted"></textarea>
             </div>
-            <div class="mb-3">
-                <label for="email" class="form-label">Email cím</label>
-                <input type="email" class="form-control" id="email"  placeholder="Add meg az email címed">
-            </div>
-            <div class="mb-3">
-                <label for="subject" class="form-label">Tárgy</label>
-                <input type="text" class="form-control" id="subject"  placeholder="Add meg az üzenet tárgyát">
-            </div>
-            <div class="mb-3">
-                <label for="message" class="form-label">Üzenet</label>
-                <textarea class="form-control" id="message" rows="5"  placeholder="Írd le az üzeneted"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Küldés</button>
+            <button type="submit" class="btn btn-danger">Küldés</button>
         </form>
     </div>
 </section>

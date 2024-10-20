@@ -59,6 +59,19 @@ public class MyUserDetailsService implements UserDetailsService {
         }
     }
 
+    public String getUsernameById(int id){
+        String sql = "SELECT felhasznalo_nev FROM felhasznalo WHERE id = :id";
+        Map<String, Object> params = new HashMap<>();
+        params.put("id", id);
+
+        try {
+            return jdbcTemplate.queryForObject(sql, params, String.class);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     public static Integer getCurrentUserId() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 

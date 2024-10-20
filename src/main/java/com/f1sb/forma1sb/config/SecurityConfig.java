@@ -24,7 +24,7 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(authz -> authz
-                        .requestMatchers("/contact","/contact_messages","/js/**","/login","/img/**","/register","/css/**","/", "/auth/**", "/diag/**","/stats").permitAll()  // Nyilvános végpontok
+                        .requestMatchers("/contact","/contact_messages","/js/**","/login","/img/**","/register","/css/**","/", "/auth/**", "/diag/**","/stats","/api/**").permitAll()  // Nyilvános végpontok
                         .anyRequest().authenticated()  // Minden más végpont hitelesítést igényel
                 )
                 .httpBasic(withDefaults())
