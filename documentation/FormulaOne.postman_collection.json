@@ -1,0 +1,269 @@
+{
+	"info": {
+		"_postman_id": "b1570cf8-f2ef-4473-a122-abac5a545077",
+		"name": "FormulaOne",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14175503"
+	},
+	"item": [
+		{
+			"name": "/diag/Available",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/diag/available",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"diag",
+						"available"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/auth/Registration",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\" : \"tesztmail@mailcim.hu\",\r\n    \"password\" : \"admin1234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/auth/registration",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"auth",
+						"registration"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/message/getall",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "a",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "adrian",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/api/message/getall",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"message",
+						"getall"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/message/post",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "a",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "adrian",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"felhasznalo_id\" : 4,\r\n    \"uzenet\" : \"Itt egy példa üzenet.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/message/post",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"message",
+						"post"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/stat/winner",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "adrian",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "a",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/stat/winner",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"stat",
+						"winner"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/stat/statistics",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "adrian",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "a",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/stat/statistics",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"stat",
+						"statistics"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "a",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "user",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "http://localhost:8080",
+			"type": "string"
+		}
+	]
+}
