@@ -43,7 +43,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/contact">Kapcsolat</a>
                 </li>
-                <li class="nav-item" sec:authorize="hasAuthority(1)">
+                <li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')">
                     <a class="nav-link" href="/contact_messages">Üzenetek</a>
                 </li>
                 <li class="nav-item" sec:authorize="isAnonymous()">
@@ -52,7 +52,7 @@
                 <li class="nav-item" sec:authorize="isAnonymous()">
                     <a class="nav-link"  href="/register">Regisztráció</a>
                 </li>
-                <li class="nav-item" sec:authorize="hasAuthority(1)">
+                <li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')">
                     <a class="nav-link"  href="/admin/home">Adminisztráció</a>
                 </li>
                 <li class="nav-item" sec:authorize="isAuthenticated()">

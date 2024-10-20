@@ -6,14 +6,18 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.List;
 
 @Service
 @Primary
@@ -36,10 +40,16 @@ public class MyUserDetailsService implements UserDetailsService {
             int userId = (Integer) result.get("id");
             String felhasznaloNev = (String) result.get("felhasznalo_nev");
             String jelszo = (String) result.get("jelszo");
-            String role = ((Integer) result.get("jog")).toString();
+            Integer jog  = ((Integer) result.get("jog"));
 
+            List<GrantedAuthority> authorities = new ArrayList<>();
+            if (jog == 1) {
+                authorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
+            } else if (jog == 2) {
+                authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
+            }
             // CustomUserDetails létrehozása a lekérdezett adatok alapján
-            return new CustomUserDetails(userId, felhasznaloNev, jelszo, AuthorityUtils.createAuthorityList(role));
+            return new CustomUserDetails(userId, felhasznaloNev, jelszo, authorities);
         } catch (Exception e) {
             throw new UsernameNotFoundException("User not found: " + username);
         }
