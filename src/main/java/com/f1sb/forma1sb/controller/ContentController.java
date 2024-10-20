@@ -21,6 +21,18 @@ public class ContentController {
 
         return "home";
     }
+    @GetMapping("/contact")
+    public String Contact() {
+
+        return "contact";
+    }
+
+    @GetMapping("/contact_messages")
+    public String ContactMessages() {
+
+        return "contact_messages";
+    }
+
     @GetMapping("/stats")
     public String stats(Model model){
         model.addAttribute("countPilots",pilotaController.countPilots());
@@ -28,7 +40,7 @@ public class ContentController {
         return "stats";
     }
 
-    @GetMapping("/sign-in")
+    @GetMapping("/login")
     public String login() {
         return "auth/login";
     }

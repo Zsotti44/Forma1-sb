@@ -21,7 +21,6 @@
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link th:href="@{css/main.css}"  rel="stylesheet">
     <link th:href="@{css/auth.css}"  rel="stylesheet">
-    <script type="text/javascript" th:src="@{js/auth.js}"></script>
 
 </head>
 <body>
@@ -41,13 +40,19 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/stats">Statisztikák</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/contact">Kapcsolat</a>
+                </li>
+                <li class="nav-item" sec:authorize="hasAuthority(1)">
+                    <a class="nav-link" href="/contact_messages">Üzenetek</a>
+                </li>
                 <li class="nav-item" sec:authorize="isAnonymous()">
-                    <a class="nav-link"  href="/sign-in">Bejelentkezés</a>
+                    <a class="nav-link"  href="/login">Bejelentkezés</a>
                 </li>
                 <li class="nav-item" sec:authorize="isAnonymous()">
                     <a class="nav-link"  href="/register">Regisztráció</a>
                 </li>
-                <li class="nav-item" sec:authorize="hasRole('user')">
+                <li class="nav-item" sec:authorize="hasRole(1)">
                     <a class="nav-link"  href="/admin/home">Adminisztráció</a>
                 </li>
                 <li class="nav-item" sec:authorize="isAuthenticated()">

@@ -9,12 +9,12 @@ import java.util.Collection;
  * Felhasználók
  */
 public class CustomUserDetails implements UserDetails {
-    private int userid;
+    private Integer userid;
     private String username;
     private String password;
     private Collection<? extends GrantedAuthority> authorities;
 
-    public CustomUserDetails(int userId, String username, String password, Collection<? extends GrantedAuthority> authorities) {
+    public CustomUserDetails(Integer userId, String username, String password, Collection<? extends GrantedAuthority> authorities) {
         this.userid = userId;
         this.username = username;
         this.password = password;
