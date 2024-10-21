@@ -44,7 +44,7 @@ public class AuthorizationController {
     public RedirectView registerUser(@ModelAttribute CustomUserDetails registrationRequest) {
         // Ellenőrizzük, hogy a felhasználónév vagy a jelszó üres-e
         if (registrationRequest.getUsername() == null || registrationRequest.getPassword() == null) {
-            return new RedirectView("/register?error=1");
+            return new RedirectView("/register?error");
         }
 
         String encodedPassword = passwordEncoder.encode(registrationRequest.getPassword());
@@ -56,7 +56,7 @@ public class AuthorizationController {
         if (result > 0) {
             return new RedirectView("/login");
         } else {
-            return new RedirectView("/register?error=2");
+            return new RedirectView("/register?error");
         }
     }
 
