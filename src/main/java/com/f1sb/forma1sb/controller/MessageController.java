@@ -6,6 +6,7 @@ import com.f1sb.forma1sb.model.UzenetRequest;
 import com.f1sb.forma1sb.model.repositories.UzenetRepository;
 import com.f1sb.forma1sb.service.MyUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -34,7 +35,7 @@ public class MessageController {
     }
 
     public List<UzenetDTO> getAllDTO() {
-        Iterable<Uzenet> uzenetek = UzenetRepository.findAll();
+        Iterable<Uzenet> uzenetek = UzenetRepository.findAll(Sort.by(Sort.Direction.DESC, "rogzites"));
         List<UzenetDTO> utenetekDTO = new ArrayList<>();
         uzenetek.forEach(uzenet -> {
             Integer UserID = uzenet.getFelhasznalo_id();
