@@ -1,7 +1,8 @@
 package com.f1sb.forma1sb.controller;
 
-import com.f1sb.forma1sb.model.UzenetDTO;
-import com.f1sb.forma1sb.model.repositories.PilotaRepository;
+import com.f1sb.forma1sb.model.*;
+import com.f1sb.forma1sb.model.repositories.NyertesRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +15,7 @@ public class ContentController {
     @Autowired private  GPController gpController;
     @Autowired private  PilotaController pilotaController;
     @Autowired private  MessageController messageController;
+    @Autowired private  NyertesRepository nyertesRepository;
 
     public ContentController(GPController gpController, PilotaController pilotaController, MessageController messageController) {
         this.pilotaController = pilotaController;
@@ -41,8 +43,18 @@ public class ContentController {
 
     @GetMapping("/stats")
     public String stats(Model model){
+        List<NationWinsResponse> nationWins = nyertesRepository.findNationWins();
+        List<PilotaWinsReponse> pilotaWins = nyertesRepository.findPilotaWins();
+        List<TeamWinsResponse>   csapatWins = nyertesRepository.findTeamWins();
+        List<GPReponse> helyszinek = nyertesRepository.findGPs();
+
         model.addAttribute("countPilots",pilotaController.countPilots());
         model.addAttribute("countGP",gpController.countGPs());
+        model.addAttribute("nationWins",nationWins);
+        model.addAttribute("pilotaWins",pilotaWins);
+        model.addAttribute("csapatWins",csapatWins);
+        model.addAttribute("helyszinek",helyszinek);
+
         return "stats";
     }
 

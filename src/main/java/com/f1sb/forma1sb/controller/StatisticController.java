@@ -1,7 +1,6 @@
 package com.f1sb.forma1sb.controller;
 
-import com.f1sb.forma1sb.model.NationWinsResponse;
-import com.f1sb.forma1sb.model.Nyertes;
+import com.f1sb.forma1sb.model.*;
 import com.f1sb.forma1sb.model.repositories.GPRepository;
 import com.f1sb.forma1sb.model.repositories.NyertesRepository;
 import com.f1sb.forma1sb.model.repositories.PilotaRepository;
@@ -40,11 +39,18 @@ public class StatisticController {
         long races = gpRepository.count();
         long drivers = pilotaRepository.count();
         List<NationWinsResponse> nationWins = nyertesRepository.findNationWins();
+        List<PilotaWinsReponse> pilotaWins = nyertesRepository.findPilotaWins();
+        List<TeamWinsResponse> csapatWins = nyertesRepository.findTeamWins();
+        List<GPReponse> helyszinek = nyertesRepository.findGPs();
 
         Map<String, Object> response = new HashMap<>();
         response.put("countOfRaces", races);
         response.put("countOfDrivers", drivers);
         response.put("NationWins", nationWins);
+        response.put("pilotaWins", pilotaWins);
+        response.put("csapatWins", csapatWins);
+        response.put("helyszinek", helyszinek);
+
         JSONObject jsonObject = new JSONObject(response);
         return ResponseEntity.ok(jsonObject.toString());
     }

@@ -13,21 +13,114 @@
         </div>
         <div class="row text-center">
             <div class="col-md-4">
-
                 <h3 class="my-3">Eddigi GP-k száma</h3>
                 <h4 class="text-muted" th:text="${countGP}"></h4>
             </div>
             <div class="col-md-4">
-
                 <h3 class="my-3">Induló pilóták száma</h3>
                 <h4 class="text-muted" th:text="${countPilots}"></h4>
             </div>
             <div class="col-md-4">
-
-                <h3 class="my-3">Statisztika 3</h3>
-                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                <h3 class="my-3">Futamgyőztes nemzetek</h3>
+                <h4 class="text-muted" th:text="${nationWins.size()}"></h4>
+            </div>
+            <div class="col-md-4">
+                <h3 class="my-3">Futamgyőztes pilóták</h3>
+                <h4 class="text-muted" th:text="${pilotaWins.size()}"></h4>
+            </div>
+            <div class="col-md-4">
+                <h3 class="my-3">Futamgyőztes csapatok</h3>
+                <h4 class="text-muted" th:text="${csapatWins.size()}"></h4>
+            </div>
+            <div class="col-md-4">
+                <h3 class="my-3">Verseny helyszínek</h3>
+                <h4 class="text-muted" th:text="${helyszinek.size()}"></h4>
             </div>
         </div>
+        <div class="text-center py-5">
+            <h2 class="text-uppercase">Egyéb kérdekes statisztikák</h2>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h5 class="">Legsikeresebb nemzetek</h5>
+
+                <table class="table table-striped table-bordered table-hover">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nemzet</th>
+                        <th scope="col">Győzelmek Száma</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="win,iter : ${nationWins}">
+                        <td th:text="${iter.index+1}"></td>
+                        <td th:text="${win.nation}"></td>
+                        <td th:text="${win.wins}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col-md-12">
+                <h5 class="">Legsikeresebb csapatok</h5>
+                <table class="table table-striped table-bordered table-hover">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Csapat</th>
+                        <th scope="col">Győzelmek Száma</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="win,iter : ${csapatWins}">
+                        <td th:text="${iter.index+1}"></td>
+                        <td th:text="${win.team}"></td>
+                        <td th:text="${win.wins}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-12">
+                <h5 class="">Legsikeresebb pilóták</h5>
+                <table class="table table-striped table-bordered table-hover">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Pilóta</th>
+                        <th scope="col">Győzelmek Száma</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="win,iter : ${pilotaWins}">
+                        <td th:text="${iter.index+1}"></td>
+                        <td th:text="${win.pilota}"></td>
+                        <td th:text="${win.wins}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-12">
+                <h5 class="">Legsikeresebb GP helyszínek</h5>
+                <table class="table table-striped table-bordered table-hover">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">GP</th>
+                        <th scope="col">Futamok Száma</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="win,iter : ${helyszinek}">
+                        <td th:text="${iter.index+1}"></td>
+                        <td th:text="${win.GP}"></td>
+                        <td th:text="${win.wins}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
     </div>
 </section>
 
