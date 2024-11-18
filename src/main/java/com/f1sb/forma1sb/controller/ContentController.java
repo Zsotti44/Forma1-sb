@@ -24,13 +24,13 @@ public class ContentController {
     }
 
     @GetMapping({"","/"})
-    public String home() {
-
+    public String home(Model model) {
+        model.addAttribute("activePage","home");
         return "home";
     }
     @GetMapping("/contact")
-    public String Contact() {
-
+    public String Contact(Model model) {
+        model.addAttribute("activePage","contact");
         return "contact";
     }
 
@@ -38,6 +38,7 @@ public class ContentController {
     public String ContactMessages(Model model) {
         List<UzenetDTO> uzenetekDTO = messageController.getAllDTO();
         model.addAttribute("uzenetek",uzenetekDTO);
+        model.addAttribute("activePage","contact_messages");
         return "contact_messages";
     }
 
@@ -54,17 +55,20 @@ public class ContentController {
         model.addAttribute("pilotaWins",pilotaWins);
         model.addAttribute("csapatWins",csapatWins);
         model.addAttribute("helyszinek",helyszinek);
+        model.addAttribute("activePage","stats");
 
         return "stats";
     }
 
     @GetMapping("/login")
-    public String login() {
+    public String login(Model model) {
+        model.addAttribute("activePage","login");
         return "auth/login";
     }
 
     @GetMapping("/register")
-    public String register() {
+    public String register(Model model) {
+        model.addAttribute("activePage","register");
         return "auth/register";
     }
 }

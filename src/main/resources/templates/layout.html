@@ -34,25 +34,25 @@
 
         <div class="navbar-collapse collapse" id="navbaar" style="">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
+                <li class="nav-item" th:classappend="${activePage == 'home' ? 'active' : ''}">
                     <a class="nav-link" href="/">Kezdőlap</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" th:classappend="${activePage == 'stats' ? 'active' : ''}">
                     <a class="nav-link" href="/stats">Statisztikák</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" th:classappend="${activePage == 'contact' ? 'active' : ''}">
                     <a class="nav-link" href="/contact">Kapcsolat</a>
                 </li>
-                <li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')">
+                <li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')" th:classappend="${activePage == 'contact_messages' ? 'active' : ''}">
                     <a class="nav-link" href="/contact_messages">Üzenetek</a>
                 </li>
-                <li class="nav-item" sec:authorize="isAnonymous()">
+                <li class="nav-item" sec:authorize="isAnonymous()" th:classappend="${activePage == 'login' ? 'active' : ''}">
                     <a class="nav-link"  href="/login">Bejelentkezés</a>
                 </li>
-                <li class="nav-item" sec:authorize="isAnonymous()">
+                <li class="nav-item" sec:authorize="isAnonymous()" th:classappend="${activePage == 'register' ? 'active' : ''}">
                     <a class="nav-link"  href="/register">Regisztráció</a>
                 </li>
-                <li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')">
+                <li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')" th:classappend="${activePage == 'admin/home' ? 'active' : ''}">
                     <a class="nav-link"  href="/admin/home">Adminisztráció</a>
                 </li>
                 <li class="nav-item" sec:authorize="isAuthenticated()">
