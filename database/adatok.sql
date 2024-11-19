@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2024. Okt 04. 23:41
+-- Létrehozás ideje: 2024. Nov 19. 22:29
 -- Kiszolgáló verziója: 10.4.28-MariaDB
 -- PHP verzió: 8.2.4
 
@@ -18,8 +18,10 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Adatbázis: `formulaone`
+-- Adatbázis: `feladat`
 --
+CREATE DATABASE IF NOT EXISTS `feladat` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `feladat`;
 
 -- --------------------------------------------------------
 
@@ -2316,17 +2318,16 @@ CREATE TABLE `felhasznalo` (
   `id` int(11) NOT NULL,
   `felhasznalo_nev` varchar(255) NOT NULL,
   `jelszo` varchar(255) NOT NULL,
-  `jog` tinyint(3) DEFAULT 2,
-  `salt` varchar(32) DEFAULT NULL
+  `jog` tinyint(3) DEFAULT 2
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
 -- A tábla adatainak kiíratása `felhasznalo`
 --
 
-INSERT INTO `felhasznalo` (`id`, `felhasznalo_nev`, `jelszo`, `jog`, `salt`) VALUES
-(1, 'adrian', 'o1lJ9JDMdHo9mKyepDrOZgaiE+YOgva5FdOSuJuScxzTsFd29p5JGpzxmMxN8Kq7C/VvRmMTnLcUrskeX9HxdA==', 1, 'tmZjmVVZo4ELNmKeoxPQOA=='),
-(2, 'adrian2', 'VI65O6O3PARAMKkx145Hx9ssxQzuYhtkTfJY1T5j3CozbpwwAFx5dJMvScZLPBAsnVZhqhZ5+69KIIjhs4Yltg==', 2, 'mix5XosCh144qrubmealeg==');
+INSERT INTO `felhasznalo` (`id`, `felhasznalo_nev`, `jelszo`, `jog`) VALUES
+(12, 'admin', '$2a$10$9cHSWDEN.3AEfkMhyX5BMecnHfjEcCeKWQxJgl6MQL93/dWU4ydRO', 1),
+(14, 'user', '$2a$10$oTw7WL6BBxPeqQP28GeESucrdJyzttv/sKZxL5qRaps0hOCRwgtxa', 2);
 
 -- --------------------------------------------------------
 
@@ -2336,8 +2337,8 @@ INSERT INTO `felhasznalo` (`id`, `felhasznalo_nev`, `jelszo`, `jog`, `salt`) VAL
 
 CREATE TABLE `gp` (
   `datum` date NOT NULL,
-  `nev` varchar(16) DEFAULT NULL,
-  `helyszin` varchar(16) DEFAULT NULL
+  `nev` varchar(255) DEFAULT NULL,
+  `helyszin` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
@@ -3111,10 +3112,10 @@ INSERT INTO `gp` (`datum`, `nev`, `helyszin`) VALUES
 CREATE TABLE `nyertesek` (
 `futam` date
 ,`csapat` varchar(32)
-,`nev` varchar(38)
-,`nemzet` varchar(11)
-,`helyszin` varchar(16)
-,`futamNeve` varchar(16)
+,`nev` varchar(255)
+,`nemzet` varchar(255)
+,`helyszin` varchar(255)
+,`futamNeve` varchar(255)
 );
 
 -- --------------------------------------------------------
@@ -3125,10 +3126,10 @@ CREATE TABLE `nyertesek` (
 
 CREATE TABLE `pilota` (
   `az` int(3) NOT NULL,
-  `nev` varchar(38) DEFAULT NULL,
-  `nem` varchar(1) DEFAULT NULL,
-  `szuldat` date DEFAULT NULL,
-  `nemzet` varchar(11) DEFAULT NULL
+  `nev` varchar(255) DEFAULT NULL,
+  `nem` char(1) DEFAULT NULL,
+  `szuldat` varchar(255) DEFAULT NULL,
+  `nemzet` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
@@ -3947,9 +3948,18 @@ INSERT INTO `pilota` (`az`, `nev`, `nem`, `szuldat`, `nemzet`) VALUES
 CREATE TABLE `uzenet` (
   `id` int(11) NOT NULL,
   `felhasznalo_id` int(11) DEFAULT NULL,
-  `uzenet` text NOT NULL,
+  `uzenet` varchar(255) DEFAULT NULL,
   `rogzites` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `uzenet`
+--
+
+INSERT INTO `uzenet` (`id`, `felhasznalo_id`, `uzenet`, `rogzites`) VALUES
+(3, NULL, 'Tesztelünk felhasznalo nelkul', '2024-10-05 18:07:11'),
+(15, NULL, 'nézd mit küldtem', '2024-10-17 21:31:45'),
+(33, 12, 'Küldök egy üzenetet magamnak', '2024-11-19 17:36:15');
 
 -- --------------------------------------------------------
 
@@ -4012,13 +4022,13 @@ ALTER TABLE `eredmeny`
 -- AUTO_INCREMENT a táblához `felhasznalo`
 --
 ALTER TABLE `felhasznalo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT a táblához `uzenet`
 --
 ALTER TABLE `uzenet`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- Megkötések a kiírt táblákhoz
