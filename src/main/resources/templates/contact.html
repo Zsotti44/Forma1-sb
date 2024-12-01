@@ -11,6 +11,9 @@
         <div class="alert alert-success" role="alert" th:if="${param.success}">
             Üzenet sikeresen elküldve!
         </div>
+        <div class="alert alert-danger" role="alert" th:if="${param.error}">
+            Üres üzenet nem küldhető! Kérjük üzenjen Nekünk az alábbi mezőben!
+        </div>
         <form th:action="@{/api/message/add}" method="post">
             <div class="mb-3">
                 <label for="uzenet" class="form-label">Üzenet</label>
